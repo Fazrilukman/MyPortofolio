@@ -365,161 +365,143 @@
   .about-list .dot-purple { background: #a993fe; }
   .about-list .dot-green { background: #43e7ad; }
 
-  /* SECTION - Skills (Tidak Diubah) */
-
-  #skills {
-      padding-top: 90px;
-      padding-bottom: 0px;
-      min-height: 70vh;
-  }
-  .skills-title {
-      text-align: center;
-      font-size: 2.9rem;
-      font-weight: 700;
-      margin-bottom: 45px;
-      background: var(--gradient-main);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-  }
-  .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 34px;
-      justify-content: center;
-      max-width: 1180px;
-      margin: 0 auto 22px auto;
-  }
-  .skill-card {
-      background: var(--bg-section);
-      border: 1.1px solid #22243a;
-      border-radius: 18px;
-      width: 330px;
-      min-height: 230px;
-      box-shadow: var(--shadow-card);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.18s;
-      margin-bottom: 10px;
-  }
-  .skill-card:hover {
-      transform: translateY(-6px) scale(1.05);
-      border: 1.5px solid var(--color-primary);
-  }
-  /* DIMODIFIKASI TOTAL: Style ikon diperbarui */
-  .skill-card .icon-container {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: var(--gradient-main);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      font-size: 2.5rem; /* Ukuran ikon diperbesar */
-      color: white;
-  }
-  /* DIMODIFIKASI: Margin dan font-weight diatur ulang */
-  .skill-card h4 {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin: 0 0 1rem 0;
-  }
-
-  /* DIMODIFIKASI: Jarak antar titik dan warna default diatur */
-  .skill-dots {
-      display: flex;
-      gap: 8px; 
-  }
-
-  .skill-dots span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: #3a3c58; /* Warna default titik */
-  }
-  .skill-dots .dot-blue { background: #74a7f3; }
-  .skill-dots .dot-purple { background: #a993fe; }
-  .skill-dots .dot-green { background: #43e7ad; }
-  .skill-dots .dot-gray { background: #414142; }
 
 
-  /* SECTION - Projects (Tidak Diubah) */
-  #projects {
-      padding-top: 90px;
-      padding-bottom: 0px;
-      min-height: 75vh;
-  }
-  .projects-title {
-      text-align: center;
-      font-size: 2.7rem;
-      font-weight: 700;
-      margin-bottom: 42px;
-      background: var(--gradient-main);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-  }
-  .projects-grid {
-      display: flex;
-      gap: 40px;
-      justify-content: center;
-      margin-bottom: 28px;
-      flex-wrap: wrap;
-  }
-  .project-card {
-      background: var(--bg-section);
-      border: 1.1px solid #22243a;
-      border-radius: 16px;
-      width: 410px;
-      min-height: 335px;
-      box-shadow: var(--shadow-card);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      margin-bottom: 14px;
-  }
-  .project-img {
-      background: #ededed;
-      height: 180px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-  }
-  .project-info {
-      padding: 26px 24px 14px 24px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-  }
-  .project-info h5 {
-      color: #fff;
-      font-size: 1.22rem;
-      font-weight: 700;
-      margin: 0 0 8px 0;
-  }
-  .project-info p {
-      color: var(--text-light);
-      font-size: 1.05rem;
-      margin: 0 0 20px 0;
-  }
-  .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-  }
-  .project-tags .tag {
-      background: #252536;
-      color: #b9b8ea;
-      border-radius: 10px;
-      padding: 6px 13px;
-      font-size: 0.97rem;
-      font-weight: 700;
-  }
+ /* ============================================================== */
+/* == AWAL BLOK PROJECTS YANG BARU (MENGGANTIKAN KODE LAMA) ==    */
+/* ============================================================== */
+
+#projects {
+    padding-bottom: 60px; /* Memberi ruang di bawah tombol */
+    padding-top: 90px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--bg-section);
+    border: 1px solid var(--border-card);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    /* Transisi untuk semua efek */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+    border-color: var(--color-primary);
+}
+
+.project-img {
+    height: 220px;
+    width: 100%;
+    overflow: hidden; /* Penting untuk efek zoom */
+    position: relative;
+}
+
+.project-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.project-card:hover .project-img img {
+    transform: scale(1.05); /* Efek zoom saat hover */
+}
+
+.project-info {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Memberi jarak antar elemen info */
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.project-header h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-light);
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.3rem;
+}
+
+.project-links a {
+    color: var(--text-muted);
+    transition: color 0.2s, transform 0.2s;
+}
+
+.project-links a:hover {
+    color: var(--color-primary);
+    transform: scale(1.2);
+}
+
+.project-info p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+    flex-grow: 1; 
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.project-tags span {
+    background: #252536;
+    color: #b9b8ea;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* KODE UNTUK SHOW/HIDE BUTTONS TETAP SAMA */
+.project-card.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: none;
+    overflow: hidden;
+}
+
+.view-all-container {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.view-all-container button.is-hidden {
+    display: none;
+}
+/* ============================================== */
+/* == AKHIR BLOK PROJECTS YANG BARU ==            */
+/* ============================================== */
 
   /* SECTION - Contact (Tidak Diubah) */
   #contact {
@@ -994,3 +976,283 @@
     height: 100%;
     object-fit: cover; /* Ini properti kuncinya, membuat gambar mengisi tanpa gepeng */
 }
+
+.grey-icon {
+    filter: grayscale(100%);
+}
+
+/* ============================================== */
+/* == STYLE BARU UNTUK TOMBOL GLOW ==             */
+/* ============================================== */
+
+/* Wadah untuk menengahkan tombol (jika belum ada) */
+.view-all-container {
+    text-align: center;
+    margin-top: 0rem;
+}
+
+.btn-glow {
+    /* Mengatur posisi untuk efek glow */
+    position: relative; 
+    z-index: 1;
+
+    /* Tampilan tombol */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem; /* Jarak antara ikon dan teks */
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 999px; /* Membuat bentuk pil */
+    cursor: pointer;
+    
+    /* Warna Gradien */
+    background: linear-gradient(135deg, #6155D4 0%, #C33764 100%);
+    
+    /* Transisi untuk hover */
+    transition: all 0.3s ease-out;
+}
+
+/* Membuat elemen semu untuk efek cahaya (glow) */
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1; /* Letakkan di belakang tombol utama */
+    
+    /* Memberi warna gradien yang sama */
+    background: linear-gradient(135deg, #6155D4 0%, #C33764 100%);
+    
+    /* Efek blur untuk menciptakan cahaya */
+    filter: blur(12px);
+    opacity: 0.7;
+    
+    /* Membuat bentuknya sama dengan tombol */
+    border-radius: inherit;
+    transition: opacity 0.3s ease-out;
+}
+
+/* Efek saat kursor mouse di atas tombol */
+.btn-glow:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+.btn-glow:hover::before {
+    opacity: 1; /* Membuat cahaya lebih terang saat hover */
+}
+
+/* Style untuk membuat tombol berada di tengah */
+.view-all-container {
+    text-align: center;
+    margin-top: 0rem; /* Memberi jarak dari grid proyek di atasnya */
+}
+
+/* ============================================================== */
+/* == AWAL BLOK SKILLS YANG BARU (MENGGANTIKAN KODE LAMA) ==      */
+/* ============================================================== */
+
+#skills .section-title {
+    margin-bottom: 1rem; /* Kurangi jarak bawah judul utama */
+}
+
+/* Style untuk sub-judul di bawah "Skills" */
+.section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    max-width: 450px;
+    margin: 0 auto 3.5rem auto; /* Atur jarak dan posisi tengah */
+    line-height: 1.6;
+}
+
+/* Grid utama untuk 4 kartu kategori */
+.skill-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom di layar besar */
+    gap: 2rem;
+}
+
+/* Kartu untuk setiap kategori skill */
+.skill-category-card {
+    background: var(--bg-section);
+    border: 1px solid #2a2c41;
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden; /* Penting untuk efek glow */
+    /* Persiapan animasi scroll */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.skill-category-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Efek cahaya ungu di border */
+.skill-category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--color-primary), #3a3c58);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Judul Kategori (e.g., "Data Analyst") */
+.skill-category-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    color: var(--text-light);
+    text-align: center; /* <-- TAMBAHKAN BARIS INI UNTUK MEMBUAT KE TENGAH */
+}
+
+/* Grid untuk pil-pil skill di dalam kartu */
+.skill-pills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1rem;
+    justify-items: center; /* <-- INI PERBAIKANNYA. Menggunakan justify-items */
+}
+
+/* Style untuk setiap pil skill */
+.skill-pill {
+    background-color: #101117;
+    border: 1px solid #2a2c41;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: background-color 0.2s;
+}
+
+.skill-pill:hover {
+    background-color: #2a2c41;
+}
+
+.skill-pill img {
+    height: 20px;
+    width: 20px;
+}
+
+.skill-pill span {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+/* Membuat grid menjadi 1 kolom di layar kecil */
+@media (max-width: 700px) {
+    /* ... (aturan lain yang sudah ada) ... */
+
+    /* TAMBAHKAN INI: menjadi 1 kolom di HP */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* ============================================== */
+/* == AKHIR BLOK SKILLS YANG BARU ==              */
+/* ============================================== */
+
+/* ================================================= */
+/* == STYLE BARU & SERAGAM UNTUK SEMUA JUDUL SECTION == */
+/* ================================================= */
+.section-title {
+    font-size: 2.8rem; /* Ukuran seragam untuk semua judul */
+    font-weight: 700;
+    margin-bottom: 50px; /* Jarak bawah yang konsisten */
+    text-align: center;  /* DIJAMIN SELALU DI TENGAH */
+
+    /* Efek Gradien */
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ======================================================= */
+/* == PERBAIKAN FINAL UNTUK SKILL TUNGGAL ==              */
+/* Membuat skill tunggal (seperti Figma) menjadi full-width */
+/* ======================================================= */
+
+.skill-pills-grid .skill-pill:only-child {
+    grid-column: 1 / -1; 
+    width: 18%; /* MEMAKSA pil untuk mengambil lebar penuh dari wadahnya */
+    box-sizing: border-box; /* Memastikan padding tidak merusak lebar */
+    justify-content: center; /* Posisikan ikon & teks kembali ke kiri */
+    
+}
+
+/* ================================================= */
+/* == CSS untuk Fitur Show/Hide All Projects ==      */
+/* ================================================= */
+
+/* Mengatur transisi pada kartu agar muncul & hilangnya halus */
+.project-card {
+    /* Pastikan ada transisi di kartu Anda */
+    transition: all 0.5s ease-in-out;
+}
+
+/* Style untuk kartu yang tersembunyi */
+.project-card.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: none;
+    overflow: hidden;
+}
+
+/* Untuk menyembunyikan tombol */
+.view-all-container button.is-hidden {
+    display: none;
+}
+
+/* ============================================================== */
+/* == PERBAIKAN FINAL UNTUK MEMAKSA GRID PROYEK ==              */
+/* Kode ini akan menimpa semua style grid proyek yang lain        */
+/* ============================================================== */
+
+/* Aturan untuk layar besar (desktop) */
+.projects-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Paksa 3 kolom */
+    gap: 2rem !important;
+}
+
+/* Aturan untuk layar menengah (tablet) */
+@media (max-width: 992px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* Paksa 2 kolom */
+    }
+}
+
+/* Aturan untuk layar kecil (HP) */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr !important; /* Paksa 1 kolom */
+    }
+}
+
