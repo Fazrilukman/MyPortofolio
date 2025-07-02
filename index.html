@@ -2,26 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Fazrilukman</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Fazri Lukman</title>
 
     <link rel="icon" type="image/png" href="assets/images/LOGO.png">
 
     <link rel="stylesheet" href="style.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-      <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 </head>
 <body>
 
     <nav>
         <div class="logo">Portofolio</div>
-        <ul>
+        <ul class="nav-links" id="nav-links">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
     </nav>
 
     <main>
@@ -40,13 +45,13 @@
                 <div class="hero-social">
                     <label>CONNECT WITH ME</label>
                     <div class="social-icons">
-                        <a href="https://github.com/Fazrilukman"><i class="fa-brands fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/fazrilukman/"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
-                        <a href="https://fazrilukman.github.io/MyPortofolio/"><i class="fa-solid fa-globe"></i></a>
+                        <a href="https://github.com/Fazrilukman" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/fazrilukman/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="mailto:fajrilukman194@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                        <a href="https://fazrilukman.github.io/MyPortofolio/" target="_blank"><i class="fa-solid fa-globe"></i></a>
                         <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.instagram.com/fazrilukman_/"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@fazrilukman_"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/fazrilukman_/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@fazrilukman_" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
                         <a href="#"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
@@ -54,7 +59,7 @@
             <div class="hero-image">
                 <div class="rotating-card-bg"></div>
                 <div class="main-card">
-                    <img src="assets/images/Fazri.png" alt="Foto Profil Fazri" style="width:100%; height: 485px; object-fit: cover;">
+                    <img src="assets/images/Fazri.png" alt="Foto Profil Fazri">
                 </div>
             </div>
         </section>
@@ -64,7 +69,7 @@
             <div class="about-card">
                 <div class="about-card-left">
                     <p>
-                       A 4th-semester Informatics student at Universitas Jenderal Achmad Yani, with a great passion for the world of technology! I am a proactive individual, always eager for new knowledge, and dedicated to creating exceptional digital experiences. Ready to innovate and learn every step of the way!
+                        A 4th-semester Informatics student at Universitas Jenderal Achmad Yani, with a great passion for the world of technology! I am a proactive individual, always eager for new knowledge, and dedicated to creating exceptional digital experiences. Ready to innovate and learn every step of the way!
                     </p>
                 </div>
                 <div class="about-card-right">
@@ -76,218 +81,118 @@
             </div>
         </section>
 
-<section id="skills" class="container">
-     <h2 class="section-title">Skills</h2>
-    <p class="section-subtitle">
-        Here are some of the skills and technologies I have learned along the way.
-    </p>
-
-    <div class="skill-categories-grid">
-        <div class="skill-category-card">
-            <h3 class="text-gradient">Web Developer</h3>
-            <div class="skill-pills-grid">
-                <div class="skill-pill"><i class="fa-brands fa-html5" style="color: #E34F26;"></i><span>HTML 5</span></div>
-                <div class="skill-pill"><i class="fa-brands fa-css3-alt" style="color: #1572B6;"></i><span>CSS 3</span></div>
-                <div class="skill-pill"><i class="fa-brands fa-js" style="color: #F7DF1E;"></i><span>JavaScript</span></div>
-                <div class="skill-pill"><i class="fa-brands fa-php" style="color: #777BB4;"></i><span>PHP</span></div>
-                <div class="skill-pill"><i class="fa-brands fa-laravel" style="color: #FF2D20;"></i><span>Laravel</span></div>
-                <div class="skill-pill"><i class="fa-solid fa-database" style="color: #4479A1;"></i><span>MySQL</span></div>
-                <div class="skill-pill"><i class="fa-brands fa-wordpress" style="color: #21759B;"></i><span>Wordpress</span></div>
-            </div>
-        </div>
-
-        <div class="skill-category-card">
-            <h3 class="text-gradient">UI/UX</h3>
-            <div class="skill-pills-grid">
-                <div class="skill-pill"><i class="fa-brands fa-figma" style="color: #F24E1E;"></i><span>Figma</span></div>
-            </div>
-        </div>
-
-        <div class="skill-category-card">
-            <h3 class="text-gradient">Design</h3>
-            <div class="skill-pills-grid">
-                <div class="skill-pill"><i class="fa-solid fa-pen-nib" style="color: #8B5CF6;"></i><span>Canva</span></div>
-                <div class="skill-pill"><i class="fa-solid fa-cube" style="color: #E87D03;"></i><span>Blender</span></div>
-                <div class="skill-pill"><i class="fa-solid fa-pen-ruler" style="color: #00A94F;"></i><span>Corel Draw</span></div>
-            </div>
-        </div>
-
-        <div class="skill-category-card">
-            <h3 class="text-gradient">Editing</h3>
-            <div class="skill-pills-grid">
-                <div class="skill-pill"><i class="fa-solid fa-film" style="color: #e74c3c;"></i><span>CapCut</span></div>
-                <div class="skill-pill"><i class="fa-solid fa-video" style="color: #3498db;"></i><span>Filmora</span></div>
-                <div class="skill-pill"><i class="fa-solid fa-camera-retro" style="color: #9b59b6;"></i><span>Lightroom</span></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="projects" class="container">
-    <h2 class="section-title">Featured Projects</h2>
-    <div class="projects-grid">
-
-        <div class="project-card">
-            <div class="project-img"><img src="assets/images/BG1.png" alt="GuitarHobbys"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>GuitarHobbys</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GuitarHobbys" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GuitarHobbys/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>Functional e-commerce platform for selling guitar instruments and accessories.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span> <span>JavaScript</span></div>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-img"><img src="assets/images/BG2.png" alt="JKT48 Website"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Website Entertainment JKT48</h4><div class="project-links"><a href="https://github.com/Fazrilukman/JKT48" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/JKT48/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>A web application for JKT48 fans, providing detailed show schedules and member data.</p>
-                <div class="project-tags"><span>HTML</span> <span>PHP</span> <span>JavaScript</span></div>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
-            </div>
-        </div>
-
-        <div class="project-card extra-project is-hidden">
-            <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
-            </div>
-        </div>
-
-        <div class="project-card extra-project is-hidden">
-            <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
-            </div>
-        </div>
-
-                <div class="project-card extra-project is-hidden">
-            <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
-            </div>
-        </div>
-                <div class="project-card extra-project is-hidden">
-            <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
-            </div>
-        </div>
-                <div class="project-card extra-project is-hidden">
-            <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
-            </div>
-        </div>
-                <div class="project-card extra-project is-hidden">
-            <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
-            </div>
-        </div>
-                <div class="project-card extra-project is-hidden">
-            <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
-            </div>
-        </div>
-                <div class="project-card extra-project is-hidden">
-            <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
-            </div>
-        </div>
-                <div class="project-card extra-project is-hidden">
-            <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
-            </div>
-        </div>
-                <div class="project-card extra-project is-hidden">
-            <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
-            </div>
-        </div>
-                <div class="project-card extra-project is-hidden">
-            <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
-            </div>
-        </div>
-                <div class="project-card extra-project is-hidden">
-            <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
-            <div class="project-info">
-                <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></a></div></div>
-                <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
-                <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="view-all-container">
-        <button id="view-all-btn" class="btn-glow">
-            <i class="fa-solid fa-rocket"></i><span>View All Projects</span><i class="fa-solid fa-arrow-down"></i>
-        </button>
-        <button id="hide-projects-btn" class="btn-glow is-hidden">
-            <i class="fa-solid fa-eye-slash"></i><span>Hide Projects</span><i class="fa-solid fa-arrow-up"></i>
-        </button>
-    </div>
-</section>
-
-<section id="contact" class="container">
-    <h2 class="contact-title text-gradient">Get In Touch</h2>
-    <div class="contact-card">
-        <div class="contact-card-left">
-            <h3>Let's Work Together</h3>
-            <p>
-                I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to say hi, feel free to reach out!
+        <section id="skills" class="container">
+            <h2 class="section-title">Skills</h2>
+            <p class="section-subtitle">
+                Here are some of the skills and technologies I have learned along the way.
             </p>
-            <ul class="contact-info-list">
-                <li><i class="fa-solid fa-envelope"></i> <span>fajrilukman194@gmail.com</span></li><br>
-                <li><i class="fa-solid fa-globe"></i> <span>https://www.fazrilukman.my.id/</span></li>
-            </ul>
-        </div>
-        <div class="contact-card-right">
-            <form class="contact-form" action="https://formspree.io/f/xvgrdbjo" method="POST" autocomplete="off">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required rows="6"></textarea>
-                <button type="submit" class="btn-primary"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
-            </form>
-        </div>
-    </div>
-</section>
+            <div class="skill-categories-grid">
+                <div class="skill-category-card">
+                    <h3 class="text-gradient">Web Developer</h3>
+                    <div class="skill-pills-grid">
+                        <div class="skill-pill"><i class="fa-brands fa-html5" style="color: #E34F26;"></i><span>HTML 5</span></div>
+                        <div class="skill-pill"><i class="fa-brands fa-css3-alt" style="color: #1572B6;"></i><span>CSS 3</span></div>
+                        <div class="skill-pill"><i class="fa-brands fa-js" style="color: #F7DF1E;"></i><span>JavaScript</span></div>
+                        <div class="skill-pill"><i class="fa-brands fa-php" style="color: #777BB4;"></i><span>PHP</span></div>
+                        <div class="skill-pill"><i class="fa-brands fa-laravel" style="color: #FF2D20;"></i><span>Laravel</span></div>
+                        <div class="skill-pill"><i class="fa-solid fa-database" style="color: #4479A1;"></i><span>MySQL</span></div>
+                        <div class="skill-pill"><i class="fa-brands fa-wordpress" style="color: #21759B;"></i><span>Wordpress</span></div>
+                    </div>
+                </div>
+                <div class="skill-category-card">
+                    <h3 class="text-gradient">UI/UX</h3>
+                    <div class="skill-pills-grid">
+                        <div class="skill-pill"><i class="fa-brands fa-figma" style="color: #F24E1E;"></i><span>Figma</span></div>
+                    </div>
+                </div>
+                <div class="skill-category-card">
+                    <h3 class="text-gradient">Design</h3>
+                    <div class="skill-pills-grid">
+                        <div class="skill-pill"><i class="fa-solid fa-pen-nib" style="color: #8B5CF6;"></i><span>Canva</span></div>
+                        <div class="skill-pill"><i class="fa-solid fa-cube" style="color: #E87D03;"></i><span>Blender</span></div>
+                        <div class="skill-pill"><i class="fa-solid fa-pen-ruler" style="color: #00A94F;"></i><span>Corel Draw</span></div>
+                    </div>
+                </div>
+                <div class="skill-category-card">
+                    <h3 class="text-gradient">Editing</h3>
+                    <div class="skill-pills-grid">
+                        <div class="skill-pill"><i class="fa-solid fa-film" style="color: #e74c3c;"></i><span>CapCut</span></div>
+                        <div class="skill-pill"><i class="fa-solid fa-video" style="color: #3498db;"></i><span>Filmora</span></div>
+                        <div class="skill-pill"><i class="fa-solid fa-camera-retro" style="color: #9b59b6;"></i><span>Lightroom</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section id="projects" class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img"><img src="assets/images/BG1.png" alt="GuitarHobbys"></div>
+                    <div class="project-info">
+                        <div class="project-header"><h4>GuitarHobbys</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GuitarHobbys" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GuitarHobbys/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a><a href="#" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></div></div>
+                        <p>Functional e-commerce platform for selling guitar instruments and accessories.</p>
+                        <div class="project-tags"><span>HTML</span> <span>CSS</span> <span>JavaScript</span></div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img"><img src="assets/images/BG2.png" alt="JKT48 Website"></div>
+                    <div class="project-info">
+                        <div class="project-header"><h4>Website Entertainment JKT48</h4><div class="project-links"><a href="https://github.com/Fazrilukman/JKT48" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/JKT48/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a><a href="#" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></div></div>
+                        <p>A web application for JKT48 fans, providing detailed show schedules and member data.</p>
+                        <div class="project-tags"><span>HTML</span> <span>PHP</span> <span>JavaScript</span></div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img"><img src="assets/images/BG3.png" alt="GameStation Store"></div>
+                    <div class="project-info">
+                        <div class="project-header"><h4>Game Station Store</h4><div class="project-links"><a href="https://github.com/Fazrilukman/GameStationStore" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://fazrilukman.github.io/GameStationStore/" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a><a href="#" target="_blank" title="Lihat Demo Video"><i class="fa-solid fa-play"></i></a></div></div>
+                        <p>An online retail platform for PC components and gaming gear for enthusiasts.</p>
+                        <div class="project-tags"><span>HTML</span> <span>CSS</span></div>
+                    </div>
+                </div>
+                <div class="project-card extra-project is-hidden">
+                    <div class="project-img"><img src="https://via.placeholder.com/400x250/333/fff?text=Project+4" alt="Project 4"></div>
+                    <div class="project-info">
+                        <div class="project-header"><h4>Another Project</h4><div class="project-links"><a href="#" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="#" target="_blank" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+                        <p>Description for another cool project goes here.</p>
+                        <div class="project-tags"><span>Laravel</span> <span>MySQL</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-container">
+                <button id="view-all-btn" class="btn-glow">
+                    <i class="fa-solid fa-rocket"></i><span>View All Projects</span><i class="fa-solid fa-arrow-down"></i>
+                </button>
+                <button id="hide-projects-btn" class="btn-glow is-hidden">
+                    <i class="fa-solid fa-eye-slash"></i><span>Hide Projects</span><i class="fa-solid fa-arrow-up"></i>
+                </button>
+            </div>
+        </section>
+
+        <section id="contact" class="container">
+            <h2 class="contact-title text-gradient">Get In Touch</h2>
+            <div class="contact-card">
+                <div class="contact-card-left">
+                    <h3>Let's Work Together</h3>
+                    <p>
+                        I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to say hi, feel free to reach out!
+                    </p>
+                    <ul class="contact-info-list">
+                        <li><i class="fa-solid fa-envelope"></i> <span>fajrilukman194@gmail.com</span></li>
+                        <li><i class="fa-solid fa-globe"></i> <span>fazrilukman.my.id</span></li>
+                    </ul>
+                </div>
+                <div class="contact-card-right">
+                    <form class="contact-form" action="https://formspree.io/f/xvgrdbjo" method="POST" autocomplete="off">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" placeholder="Your Message" required rows="6"></textarea>
+                        <button type="submit" class="btn-primary"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -295,14 +200,43 @@
     </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- Kode untuk Menu Hamburger Responsif ---
+    const hamburger = document.getElementById('hamburger');
+    const navLinksContainer = document.getElementById('nav-links');
+    const navLinks = document.querySelectorAll('#nav-links li a');
+
+    if (hamburger && navLinksContainer) {
+        hamburger.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('open');
+            // Ganti ikon bars menjadi 'x' (close) saat menu terbuka
+            const icon = hamburger.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    }
+
+    // Menutup menu saat link di klik (untuk navigasi di halaman yang sama)
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinksContainer.classList.contains('open')) {
+                navLinksContainer.classList.remove('open');
+                const icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+
     // --- Kode untuk Navigasi Aktif saat Scroll ---
-    const navLinks = document.querySelectorAll('nav ul li a');
+    const allNavLinks = document.querySelectorAll('nav ul li a');
     window.addEventListener('scroll', () => {
         let fromTop = window.scrollY + 110;
-        navLinks.forEach(link => {
+        allNavLinks.forEach(link => {
             let section = document.querySelector(link.getAttribute('href'));
             if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
-                navLinks.forEach(l => l.classList.remove('active'));
+                allNavLinks.forEach(l => l.classList.remove('active'));
                 link.classList.add('active');
             }
         });
@@ -322,8 +256,6 @@
     });
 
     animatedElements.forEach((element, index) => {
-        let staggerIndex = index % 3;
-        element.style.transitionDelay = (staggerIndex * 100) + 'ms';
         observer.observe(element);
     });
 
@@ -334,7 +266,6 @@
     const projectsSection = document.getElementById('projects');
 
     if (viewAllBtn && hideBtn && extraProjects.length > 0) {
-        // Ketika tombol "View All" diklik
         viewAllBtn.addEventListener('click', () => {
             extraProjects.forEach(card => {
                 card.classList.remove('is-hidden');
@@ -343,36 +274,29 @@
             hideBtn.classList.remove('is-hidden');
         });
 
-        // Ketika tombol "Hide" diklik
         hideBtn.addEventListener('click', () => {
             extraProjects.forEach(card => {
                 card.classList.add('is-hidden');
             });
             hideBtn.classList.add('is-hidden');
             viewAllBtn.classList.remove('is-hidden');
-            
-            // Scroll kembali ke atas section project
-            projectsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
-            // --- Kode BARU untuk Animasi Subtitle Mengetik ---
-    var options = {
-        strings: ['Web Developer', 'UI/UX Design', 'Design', 'Editing Video & Foto'],
-        typeSpeed: 80,  // Kecepatan mengetik
-        backSpeed: 50,  // Kecepatan menghapus
-        backDelay: 2000, // Jeda 2 detik setelah selesai mengetik
-        loop: true      // Mengulang terus-menerus
-    };
-
-    var typed = new Typed('#animated-subtitle', options);
-
-
-    // --- Kode untuk Navigasi Aktif saat Scroll ---
-    const navLinks = document.querySelectorAll('nav ul li a');
-    // ... (sisa kode Anda yang lain jangan dihapus) ...
     }
     
+    // --- Kode untuk Animasi Subtitle Mengetik ---
+    if (document.getElementById('animated-subtitle')) {
+        var options = {
+            strings: ['Web Developer', 'UI/UX Enthusiast', 'Graphic Designer', 'Video & Photo Editor'],
+            typeSpeed: 80,
+            backSpeed: 50,
+            backDelay: 2000,
+            loop: true
+        };
+        var typed = new Typed('#animated-subtitle', options);
+    }
+});
 </script>
-
 
 </body>
 </html>
