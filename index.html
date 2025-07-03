@@ -16,26 +16,34 @@
 <body>
 
     <nav>
-        <div class="logo">Portofolio</div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="hamburger" id="hamburger">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav>
+    <div class="logo">Portofolio</div>
+    
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Buka menu">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <ul class="nav-links" id="nav-links">
+        <li>
+            <button class="close-btn" id="close-btn" aria-label="Tutup menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="overlay" id="overlay"></div>
 
     <main>
         <section id="home" class="hero container">
             <div class="hero-text">
                 <h1 class="line-1">Hello, I'm</h1>
-                <h1 class="line-2"><span class="gradient">Fazri Lukman Nurrohman</span></h1>
-                <h2><span id="animated-subtitle"></span></h2>
-                <p>
+                <h1 class="line-2"><span class="gradient" id="animated-name"></span></h1>
+                <h2><span id="animated-subtitle"></span></h2><br>
                     A creative Web Developer with a focus on modern technologies. I am passionate about designing, building, and deploying intuitive, fast, and future-ready web applications.
                 </p>
                 <div class="hero-btns">
@@ -201,99 +209,117 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // --- Kode untuk Menu Hamburger Responsif ---
-    const hamburger = document.getElementById('hamburger');
-    const navLinksContainer = document.getElementById('nav-links');
-    const navLinks = document.querySelectorAll('#nav-links li a');
 
-    if (hamburger && navLinksContainer) {
-        hamburger.addEventListener('click', () => {
-            navLinksContainer.classList.toggle('open');
-            // Ganti ikon bars menjadi 'x' (close) saat menu terbuka
-            const icon = hamburger.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-    }
-
-    // Menutup menu saat link di klik (untuk navigasi di halaman yang sama)
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navLinksContainer.classList.contains('open')) {
-                navLinksContainer.classList.remove('open');
-                const icon = hamburger.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    });
-
-    // --- Kode untuk Navigasi Aktif saat Scroll ---
-    const allNavLinks = document.querySelectorAll('nav ul li a');
-    window.addEventListener('scroll', () => {
-        let fromTop = window.scrollY + 110;
-        allNavLinks.forEach(link => {
-            let section = document.querySelector(link.getAttribute('href'));
-            if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
-                allNavLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-            }
-        });
-    });
-
-    // --- Kode untuk Animasi Kartu saat Scroll ---
+    // === 1. SELEKSI ELEMEN ===
+    const allAnchorLinks = document.querySelectorAll('a[href^="#"]');
+    const sidebar = document.getElementById('nav-links');
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const overlay = document.getElementById('overlay');
+    const allNavLinksForHighlight = document.querySelectorAll('nav ul li a');
     const animatedElements = document.querySelectorAll('.about-card, .skill-category-card, .project-card, .contact-card');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    animatedElements.forEach((element, index) => {
-        observer.observe(element);
-    });
-
-    // --- Kode untuk Tombol "View All / Hide Projects" ---
     const viewAllBtn = document.getElementById('view-all-btn');
     const hideBtn = document.getElementById('hide-projects-btn');
     const extraProjects = document.querySelectorAll('.extra-project');
     const projectsSection = document.getElementById('projects');
+    const nameElement = document.getElementById('animated-name');
+    const subtitleElement = document.getElementById('animated-subtitle');
 
+    // === 2. FUNGSI & EVENT LISTENERS ===
+
+    // --- Sidebar & Smooth Scroll ---
+    if (hamburgerBtn && closeBtn && sidebar && overlay) {
+        const openSidebar = () => { sidebar.classList.add('active'); overlay.classList.add('active'); };
+        const closeSidebar = () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); };
+        hamburgerBtn.addEventListener('click', openSidebar);
+        closeBtn.addEventListener('click', closeSidebar);
+        overlay.addEventListener('click', closeSidebar);
+    }
+    allAnchorLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                if (sidebar && sidebar.classList.contains('active')) {
+                    closeSidebar();
+                }
+                setTimeout(() => {
+                     targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 150);
+            }
+        });
+    });
+
+    // --- Navigasi Aktif & Animasi Kartu saat Scroll ---
+    window.addEventListener('scroll', () => {
+        let fromTop = window.scrollY + 110;
+        allNavLinksForHighlight.forEach(link => {
+            let sectionId = link.getAttribute('href');
+            if (sectionId && sectionId.startsWith('#')) {
+                let section = document.querySelector(sectionId);
+                if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+                    allNavLinksForHighlight.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            }
+        });
+    });
+    if (animatedElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        animatedElements.forEach((element, index) => {
+            element.style.transitionDelay = (index % 4 * 100) + 'ms';
+            observer.observe(element);
+        });
+    }
+
+    // --- Tombol "View All / Hide Projects" ---
     if (viewAllBtn && hideBtn && extraProjects.length > 0) {
         viewAllBtn.addEventListener('click', () => {
-            extraProjects.forEach(card => {
-                card.classList.remove('is-hidden');
-            });
+            extraProjects.forEach(card => card.classList.remove('is-hidden'));
             viewAllBtn.classList.add('is-hidden');
             hideBtn.classList.remove('is-hidden');
         });
-
         hideBtn.addEventListener('click', () => {
-            extraProjects.forEach(card => {
-                card.classList.add('is-hidden');
-            });
+            extraProjects.forEach(card => card.classList.add('is-hidden'));
             hideBtn.classList.add('is-hidden');
             viewAllBtn.classList.remove('is-hidden');
-            projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (projectsSection) projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     }
     
-    // --- Kode untuk Animasi Subtitle Mengetik ---
-    if (document.getElementById('animated-subtitle')) {
-        var options = {
-            strings: ['Web Developer', 'UI/UX Enthusiast', 'Graphic Designer', 'Video & Photo Editor'],
+    // --- **PERUBAHAN UTAMA: Logika Animasi Mengetik** ---
+    
+    // Animasi untuk NAMA Anda
+    if (nameElement) {
+        new Typed('#animated-name', {
+            // Menggunakan <br> agar nama turun baris
+            strings: ['Fazri Lukman<br>Nurrohman'], 
+            typeSpeed: 100,
+            backSpeed: 100,  // Kecepatan menghapus
+            backDelay: 2000, // Jeda sebelum menghapus
+            showCursor: true,
+            cursorChar: '|',
+            loop: true // **Membuat animasi berulang**
+        });
+    }
+    
+    // Animasi untuk SUB-JUDUL
+    if (subtitleElement) {
+        new Typed('#animated-subtitle', {
+            strings: ['Web Developer', 'UI/UX Design', 'Graphic Designer'],
             typeSpeed: 80,
             backSpeed: 50,
             backDelay: 2000,
             loop: true
-        };
-        var typed = new Typed('#animated-subtitle', options);
+        });
     }
 });
 </script>

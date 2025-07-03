@@ -31,6 +31,7 @@ html, body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
+    padding-top: 72px; /* <-- TAMBAHKAN BARIS INI */
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
@@ -79,10 +80,11 @@ section {
 /* =================================================== */
 /* 3. NAVIGATION (NAVBAR)                              */
 /* =================================================== */
+/* MENJADI SEPERTI INI */
 nav {
     width: 100%;
     box-sizing: border-box;
-    position: sticky;
+    position: fixed; /* <-- INI PERUBAHANNYA */
     top: 0;
     left: 0;
     z-index: 100;
@@ -153,7 +155,7 @@ nav ul li a:hover::after {
     align-items: center;
     justify-content: space-between;
     gap: 56px;
-    min-height: calc(100vh - 72px);
+    min-height: 90vh; /* <-- Cukup gunakan vh standar */
     margin-bottom: 32px;
     padding-top: 20px;
 }
@@ -765,5 +767,461 @@ footer {
     .contact-card {
         flex-direction: column;
         padding: 30px 20px;
+    }
+}
+
+/* =================================================== */
+/* 12. RESPONSIVE SIDEBAR NAVIGATION                   */
+/* Letakkan kode ini di bagian paling bawah CSS Anda    */
+/* =================================================== */
+
+/* Tombol Hamburger (Awalnya tersembunyi di desktop) */
+.hamburger-btn {
+    display: none; /* Sembunyikan di layar besar */
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.6rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Tombol Tutup Sidebar */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+.close-btn:hover {
+    color: var(--text-main);
+}
+
+/* Overlay (Latar belakang gelap) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 998; /* Di bawah sidebar, di atas konten */
+    opacity: 0;
+    pointer-events: none; /* Tidak bisa diklik saat tersembunyi */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto; /* Bisa diklik saat aktif */
+}
+
+
+/* -- Breakpoint saat Navigasi berubah menjadi Sidebar -- */
+@media (max-width: 992px) {
+
+    /* Tampilkan tombol hamburger */
+    .hamburger-btn {
+        display: block;
+    }
+
+    /* Ubah daftar link menjadi sidebar */
+    nav .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px; /* Lebar sidebar */
+        height: 100vh;
+        background-color: var(--bg-section);
+        border-left: 1px solid var(--border-card);
+        z-index: 999;
+
+        /* Atur ulang dari horizontal ke vertikal */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        
+        /* Sembunyikan sidebar di luar layar ke kanan */
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+    }
+
+    /* Kelas .active akan menggeser sidebar ke dalam layar */
+    nav .nav-links.active {
+        transform: translateX(0);
+    }
+    
+    /* Atur ulang gaya link di dalam sidebar */
+    nav .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav .nav-links li a {
+        font-size: 1.5rem;
+        padding: 1rem 0;
+        display: block;
+        width: 100%;
+    }
+
+    /* Sembunyikan garis bawah pada link di mode sidebar */
+    nav ul li a.active::after,
+    nav ul li a:hover::after {
+        display: none;
+    }
+
+    nav ul li a:hover {
+        background-color: rgba(169, 147, 254, 0.1);
+    }
+}
+
+/* =================================================== */
+/* 13. PERBAIKAN TAMPILAN MOBILE (HERO SECTION)        */
+/* Letakkan kode ini di bagian paling bawah CSS Anda    */
+/* =================================================== */
+
+/* --- Target untuk Layar Mobile --- */
+@media (max-width: 768px) {
+
+    /* 1. Perbaikan Gambar Hero (Tidak Terpotong) */
+    .main-card img {
+        /* Mengubah posisi fokus gambar dari tengah ke atas */
+        object-position: top; 
+    }
+
+    /* 2. Perbaikan Teks Animasi & Kepadatan Layout */
+    .hero-text h1.line-1, 
+    .hero-text h1.line-2 {
+        font-size: 2.5rem; /* Perkecil sedikit ukuran font judul utama */
+        line-height: 1.2;
+    }
+
+    .hero-text h2 {
+        font-size: 1.4rem; /* Perkecil font subtitle animasi */
+        min-height: 40px;  /* Beri ruang agar tidak "loncat" */
+    }
+
+    .hero-text p {
+        font-size: 0.95rem; /* Perkecil sedikit font paragraf */
+        padding: 0 10px;   /* Beri sedikit padding agar tidak terlalu mepet ke tepi */
+    }
+
+    /* 3. Perbaikan Tombol "Let's Talk" dan Penyesuaian Tombol Lain */
+    .hero-btns {
+        flex-direction: column; /* Susun tombol ke bawah */
+        align-items: center;    /* Posisikan di tengah */
+        gap: 1rem;              /* Beri jarak antar tombol */
+    }
+
+    .hero-btns .btn-primary, .hero-btns .btn-secondary {
+        width: 80%; /* Buat lebar tombol konsisten */
+        justify-content: center;
+        padding: 14px 24px; /* Sedikit sesuaikan padding */
+        font-size: 1.1rem;
+    }
+    
+    .hero-btns .btn-secondary {
+        /* Memberi warna latar solid untuk menghilangkan artefak visual */
+        background-color: rgba(35, 35, 54, 0.5); 
+        border-color: #555;
+    }
+    
+    .hero-btns .btn-secondary:hover {
+        background-color: rgba(50, 50, 70, 0.8);
+        border-color: var(--text-light);
+    }
+}
+
+/* =================================================== */
+/* 15. PERBAIKAN FINAL TAMPILAN MOBILE                 */
+/* =================================================== */
+
+@media (max-width: 768px) {
+
+    /* --- 1. Memberi 'Ruang Napas' pada Layout --- */
+    nav {
+        /* Menambah jarak logo & hamburger dari tepi layar */
+        padding: 0 24px; 
+    }
+    .hero-text {
+        /* Menambah jarak untuk semua teks di bagian hero */
+        padding: 0 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* --- 2. Memperbaiki Teks yang Terpotong --- */
+    .hero-text h1.line-1, 
+    .hero-text h1.line-2 {
+        /* Ukuran font diperkecil secara signifikan agar muat */
+        font-size: 2.4rem; 
+        line-height: 1.25;
+    }
+    .hero-text h2 {
+        /* Ukuran sub-judul juga diperkecil */
+        font-size: 1.3rem;
+        min-height: 40px;
+    }
+    
+    /* Failsafe untuk menyembunyikan kursor animasi di mobile, jika JS tidak berjalan sempurna */
+    .typed-cursor {
+        display: none !important;
+    }
+
+    /* --- 3. Memperbaiki Tombol --- */
+    .hero-btns {
+        /* Paksa tombol untuk tersusun ke bawah */
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem; /* Jarak antar tombol */
+        width: 100%;
+    }
+
+    .hero-btns .btn-primary, 
+    .hero-btns .btn-secondary {
+        /* Atur lebar agar konsisten dan tidak terlalu lebar */
+        width: 90%; 
+        max-width: 400px;
+        justify-content: center; /* Teks dan ikon di tengah tombol */
+        
+        /* Trik untuk menghilangkan garis/artefak aneh di sudut tombol */
+        overflow: hidden; 
+    }
+
+    /* --- 4. Penyesuaian Jarak Lainnya --- */
+    .hero-social {
+        margin-top: 40px; /* Jarak dari tombol ke 'CONNECT WITH ME' */
+    }
+}
+
+/* =================================================== */
+/* 16. PERBAIKAN FINAL TEKS WRAPPING MOBILE          */
+/* =================================================== */
+
+@media (max-width: 768px) {
+
+    .hero-text h1.line-1, 
+    .hero-text h1.line-2 {
+        /* Ukuran font diperkecil lagi agar lebih aman di semua perangkat */
+        font-size: 2.2rem; 
+        
+        /* Memberi jarak yang pas jika nama harus turun ke 2 baris */
+        line-height: 1.3; 
+
+        /* INI KUNCI PERBAIKANNYA: */
+        /* Mengizinkan teks untuk turun ke baris baru jika tidak muat */
+        white-space: normal; 
+        
+        /* Memastikan kata yang panjang bisa dipisah jika terpaksa */
+        word-break: break-word; 
+    }
+
+    .hero-text h2 {
+        /* Penyesuaian untuk sub-judul agar tidak terpotong juga */
+        font-size: 1.2rem;
+        white-space: normal;
+        word-break: break-word;
+        min-height: 30px; /* Ruang agar layout stabil */
+    }
+}
+/* =================================================== */
+/* 17. FAILSAFE: HENTIKAN PAKSA ANIMASI DI MOBILE      */
+/* =================================================== */
+
+@media (max-width: 768px) {
+    /* Targetkan elemen span yang berisi animasi */
+    #animated-name, #animated-subtitle {
+        /* Hentikan semua animasi CSS atau JS yang mungkin berjalan */
+        animation: none !important;
+        
+        /* Hapus properti yang membuat teks terpotong */
+        white-space: normal !important;
+        overflow: visible !important;
+        width: auto !important;
+        
+        /* Hapus kursor animasi jika masih muncul */
+        border: none !important;
+    }
+
+    /* Sembunyikan kursor dari library Typed.js secara paksa */
+    .typed-cursor {
+        display: none !important;
+    }
+    
+    /* Sedikit penyesuaian ukuran font sekali lagi untuk kepastian */
+    .hero-text h1.line-2 {
+        font-size: 2.2rem;
+        line-height: 1.3;
+    }
+     .hero-text h2 {
+        font-size: 1.2rem;
+    }
+}
+
+/* =================================================== */
+/* 18. PERBAIKAN TOTAL TAMPILAN HERO MOBILE            */
+/* =================================================== */
+
+@media (max-width: 768px) {
+
+    /* --- Penataan Ulang Layout Hero --- */
+    #home.hero {
+        /* Mengurangi padding atas bawah agar tidak terlalu panjang */
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .hero-text {
+        padding: 0 10px; /* Jarak dari tepi layar */
+    }
+
+    /* --- 1. MEMBUAT NAMA JADI 2 BARIS --- */
+    .hero-text h1.line-2 {
+        /* Ukuran font disesuaikan */
+        font-size: 2.5rem; 
+        line-height: 1.2;
+        
+        /* Trik agar "Nurrohman" turun:
+           Kita batasi lebar maksimum elemen nama, sehingga kata terakhir
+           akan otomatis turun ke bawah. */
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* --- 2. MENGATUR RUANG UNTUK ANIMASI SUB-JUDUL --- */
+    .hero-text h2 {
+        /* Ukuran font sub-judul agar tidak pecah */
+        font-size: 1.4rem;
+        
+        /* Beri ruang vertikal yang cukup untuk 2 baris teks animasi,
+           seperti "Video & Photo Editor" agar tidak membuat layout "loncat". */
+        min-height: 4rem; 
+        
+        /* Izinkan teks animasi untuk turun baris jika perlu */
+        white-space: normal; 
+        line-height: 1.4;
+    }
+    
+    /* --- 3. MERAPIKAN KEMBALI TOMBOL-TOMBOL --- */
+    .hero-btns {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .hero-btns .btn-primary, 
+    .hero-btns .btn-secondary {
+        width: 90%; 
+        max-width: 350px;
+        justify-content: center;
+        overflow: hidden; /* Menghilangkan garis aneh di sudut */
+    }
+}
+
+/* =================================================== */
+/* 19. PERBAIKAN RADIKAL MOBILE LAYOUT (TEKS STATIS)   */
+/* =================================================== */
+
+@media (max-width: 768px) {
+
+    .hero-text {
+        /* Memastikan semua teks di dalamnya berada di tengah */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-text h1.line-2 {
+        /* Beri ruang untuk 2 baris nama */
+        font-size: 2.4rem; 
+        line-height: 1.25;
+        height: auto;
+        min-height: 5rem; /* Ruang untuk 2 baris */
+    }
+
+    /* Target langsung ke span di dalamnya */
+    #animated-name {
+        /* Pastikan tidak ada sisa-sisa properti animasi */
+        white-space: normal !important;
+        animation: none !important;
+        border: none !important;
+    }
+
+    .hero-text h2 {
+        font-size: 1.4rem;
+        margin-top: -1rem; /* Tarik sedikit ke atas agar lebih dekat dengan nama */
+        color: var(--text-light);
+    }
+
+    #animated-subtitle {
+        white-space: normal !important;
+    }
+
+    .hero-text p {
+        padding: 0 10px;
+        margin-top: 1.5rem;
+    }
+    
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    .hero-btns .btn-primary, 
+    .hero-btns .btn-secondary {
+        width: 90%; 
+        max-width: 350px;
+        justify-content: center;
+        overflow: hidden; 
+    }
+}
+
+/* =================================================== */
+/* 20. CSS FINAL UNTUK MENDUKUNG ANIMASI MOBILE        */
+/* =================================================== */
+
+@media (max-width: 768px) {
+    .hero-text h1.line-2 {
+        font-size: 2.4rem;
+        line-height: 1.3;
+        /* Beri ruang vertikal agar teks animasi tidak membuat layout "loncat" */
+        min-height: 3.5rem; 
+        /* Pastikan teks bisa di tengah dengan benar */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-text h2 {
+        font-size: 1.4rem;
+        /* Beri ruang vertikal untuk animasi sub-judul */
+        min-height: 2rem;
+    }
+}
+
+/* =================================================== */
+/* 21. PENYESUAIAN JARAK HERO SECTION MOBILE           */
+/* =================================================== */
+
+@media (max-width: 768px) {
+    .hero-text h1.line-2 {
+        /* Menambah jarak di bawah nama */
+        margin-bottom: 1rem; 
+    }
+
+    .hero-text h2 {
+        /* Menambah jarak di bawah sub-judul */
+        margin-bottom: 1.5rem; 
     }
 }
