@@ -31,7 +31,7 @@ html, body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    padding-top: 72px; /* <-- TAMBAHKAN BARIS INI */
+    padding-top: 72px;
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
@@ -80,14 +80,13 @@ section {
 /* =================================================== */
 /* 3. NAVIGATION (NAVBAR)                              */
 /* =================================================== */
-/* MENJADI SEPERTI INI */
 nav {
     width: 100%;
     box-sizing: border-box;
-    position: fixed; /* <-- INI PERUBAHANNYA */
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 1000;
     background: rgba(16, 17, 23, 0.98);
     display: flex;
     align-items: center;
@@ -106,7 +105,7 @@ nav .logo {
     background-clip: text;
 }
 
-nav ul {
+nav .nav-links {
     display: flex;
     list-style: none;
     gap: 36px;
@@ -114,7 +113,7 @@ nav ul {
     padding: 0;
 }
 
-nav ul li a {
+nav .nav-links li a {
     color: var(--text-main);
     text-decoration: none;
     font-weight: 500;
@@ -125,16 +124,16 @@ nav ul li a {
     white-space: nowrap;
 }
 
-nav ul li a:hover {
+nav .nav-links li a:hover {
     color: var(--color-primary);
 }
 
-nav ul li a.active {
+nav .nav-links li a.active {
     color: #62a1ff;
 }
 
-nav ul li a.active::after,
-nav ul li a:hover::after {
+nav .nav-links li a.active::after,
+nav .nav-links li a:hover::after {
     content: '';
     display: block;
     position: absolute;
@@ -155,9 +154,9 @@ nav ul li a:hover::after {
     align-items: center;
     justify-content: space-between;
     gap: 56px;
-    min-height: 90vh; /* <-- Cukup gunakan vh standar */
-    margin-bottom: 32px;
+    min-height: calc(100vh - 72px);
     padding-top: 20px;
+    padding-bottom: 32px;
 }
 
 .hero-text {
@@ -169,20 +168,22 @@ nav ul li a:hover::after {
     line-height: 1.12;
     margin: 0;
 }
-.hero-text h1.line-1 { font-size: 4.7rem; }
-.hero-text h1.line-2 { font-size: 4.7rem; margin-bottom: 10px; }
 
+.hero-text h1.line-1,
+.hero-text h1.line-2 {
+    font-size: 4.7rem;
+}
+
+.hero-text h1.line-2 {
+    margin-bottom: 10px;
+}
+
+/* PERUBAHAN CSS: Menghapus animasi ketik dari nama */
 .hero-text h1.line-2 .gradient {
     background: var(--gradient-purpleblue);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
-    white-space: nowrap;
-    overflow: hidden;
-    display: inline-block;
-    border-right: 4px solid var(--color-primary);
-    animation: typing-loop 7s steps(22, end) infinite, blink-caret .75s step-end infinite;
-    width: 100%;
+    color: transparent; /* Mengganti -webkit-text-fill-color */
 }
 
 .hero-text h2 {
@@ -190,6 +191,7 @@ nav ul li a:hover::after {
     margin: 12px 0 18px 0;
     font-weight: 400;
     color: var(--text-light);
+    min-height: 5rem; /* Memberi ruang vertikal agar layout stabil */
 }
 
 .hero-text p {
@@ -217,6 +219,7 @@ nav ul li a:hover::after {
     gap: 11px;
     text-decoration: none;
     transition: all 0.22s;
+    justify-content: center;
 }
 
 .hero-btns .btn-primary {
@@ -310,14 +313,15 @@ nav ul li a:hover::after {
     object-fit: cover;
 }
 
+
 /* =================================================== */
-/* 5. ABOUT SECTION                                    */
+/* 5. SEKSI LAINNYA (ABOUT, SKILLS, DLL.)              */
 /* =================================================== */
+
+/* --- About Section --- */
 #about {
     background: transparent;
-    min-height: auto;
 }
-
 .about-card {
     background: var(--bg-section);
     border: 1.1px solid #22243a;
@@ -330,346 +334,70 @@ nav ul li a:hover::after {
     box-shadow: var(--shadow-card);
     align-items: flex-start;
 }
-
 .about-card-left { flex: 2; }
 .about-card-right { flex: 1.5; margin-left: 30px; }
-
-.about-card p {
-    font-size: 1.23rem;
-    line-height: 1.85;
-    color: var(--text-light);
-    margin: 0 0 18px 0;
-}
-
-.about-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.about-list li {
-    font-size: 1.17rem;
-    color: var(--text-main);
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-}
-
-.about-list li span[class^="dot-"] {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-right: 6px;
-}
+.about-card p { font-size: 1.23rem; line-height: 1.85; color: var(--text-light); margin: 0 0 18px 0; }
+.about-list { list-style: none; margin: 0; padding: 0; }
+.about-list li { font-size: 1.17rem; color: var(--text-main); margin-bottom: 18px; display: flex; align-items: center; gap: 13px; }
+.about-list li span[class^="dot-"] { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; }
 .about-list .dot-blue { background: #74a7f3; }
 .about-list .dot-purple { background: #a993fe; }
 
-/* =================================================== */
-/* 6. SKILLS SECTION                                   */
-/* =================================================== */
-.skill-categories-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-}
-
-.skill-category-card {
-    background: var(--bg-section);
-    border: 1px solid #2a2c41;
-    border-radius: 16px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.skill-category-card.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.skill-category-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, var(--color-primary), #3a3c58);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-}
-
-.skill-category-card h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0 0 1.5rem 0;
-    color: var(--text-light);
-    text-align: center;
-}
-
-.skill-pills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 1rem;
-    justify-items: center;
-}
-
-.skill-pill {
-    background-color: #101117;
-    border: 1px solid #2a2c41;
-    border-radius: 8px;
-    padding: 0.6rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    transition: background-color 0.2s;
-    width: 100%;
-    box-sizing: border-box;
-    justify-content: center;
-}
+/* --- Skills Section --- */
+.skill-categories-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.skill-category-card { background: var(--bg-section); border: 1px solid #2a2c41; border-radius: 16px; padding: 2rem; position: relative; overflow: hidden; opacity: 0; transform: translateY(50px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.skill-category-card.is-visible { opacity: 1; transform: translateY(0); }
+.skill-category-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, var(--color-primary), #3a3c58); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+.skill-category-card h3 { font-size: 1.5rem; font-weight: 600; margin: 0 0 1.5rem 0; color: var(--text-light); text-align: center; }
+.skill-pills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; justify-items: center; }
+.skill-pill { background-color: #101117; border: 1px solid #2a2c41; border-radius: 8px; padding: 0.6rem 1rem; display: flex; align-items: center; gap: 0.75rem; transition: background-color 0.2s; width: 100%; box-sizing: border-box; justify-content: center; }
 .skill-pill:hover { background-color: #2a2c41; }
 .skill-pill i { font-size: 1.25rem; }
-.skill-pill span {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--text-light);
-}
-/* Fix for single pill in a grid */
-.skill-pills-grid .skill-pill:only-child {
-    grid-column: 1 / -1;
-    max-width: 200px;
-}
+.skill-pill span { font-size: 0.95rem; font-weight: 500; color: var(--text-light); }
+.skill-pills-grid .skill-pill:only-child { grid-column: 1 / -1; max-width: 200px; }
 
-/* =================================================== */
-/* 7. PROJECTS SECTION                                 */
-/* =================================================== */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
-.project-card {
-    background: var(--bg-section);
-    border: 1.1px solid var(--border-card);
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, all 0.5s ease-in-out;
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.project-img {
-    height: 200px;
-    width: 100%;
-    border-bottom: 1.1px solid var(--border-card);
-}
-
-.project-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.project-info {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 0.75rem;
-}
-
-.project-header h4 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--text-light);
-    margin: 0;
-}
-
+/* --- Projects Section --- */
+.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.project-card { background: var(--bg-section); border: 1.1px solid var(--border-card); border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease, all 0.5s ease-in-out; }
+.project-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+.project-img { height: 200px; width: 100%; border-bottom: 1.1px solid var(--border-card); }
+.project-img img { width: 100%; height: 100%; object-fit: cover; }
+.project-info { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+.project-header h4 { font-size: 1.3rem; font-weight: 600; color: var(--text-light); margin: 0; }
 .project-links { display: flex; gap: 1rem; }
 .project-links a { color: var(--text-muted); font-size: 1.2rem; transition: color 0.2s; }
 .project-links a:hover { color: var(--color-primary); }
-
-.project-info p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--text-muted);
-    margin: 0 0 1.5rem 0;
-    flex-grow: 1;
-}
-
+.project-info p { font-size: 1rem; line-height: 1.6; color: var(--text-muted); margin: 0 0 1.5rem 0; flex-grow: 1; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.project-tags span {
-    background: #252536;
-    color: #b9b8ea;
-    border-radius: 6px;
-    padding: 5px 12px;
-    font-size: 0.85rem;
-    font-weight: 500;
-}
+.project-tags span { background: #252536; color: #b9b8ea; border-radius: 6px; padding: 5px 12px; font-size: 0.85rem; font-weight: 500; }
+.view-all-container { text-align: center; margin-top: 3rem; }
+.btn-glow { position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.9rem 2rem; font-size: 1.1rem; font-weight: 600; color: white; text-decoration: none; border: none; border-radius: 999px; cursor: pointer; background: var(--gradient-btn-glow); transition: all 0.3s ease-out; }
+.btn-glow::before { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; z-index: -1; background: var(--gradient-btn-glow); filter: blur(12px); opacity: 0.7; border-radius: inherit; transition: opacity 0.3s ease-out; }
+.btn-glow:hover { transform: translateY(-3px) scale(1.05); }
+.btn-glow:hover::before { opacity: 1; }
+.project-card.is-hidden { display: none; }
+.view-all-container button.is-hidden { display: none; }
 
-/* Show/Hide Projects Feature */
-.view-all-container {
-    text-align: center;
-    margin-top: 3rem;
-}
-
-.btn-glow {
-    position: relative;
-    z-index: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 0.9rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: white;
-    text-decoration: none;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
-    background: var(--gradient-btn-glow);
-    transition: all 0.3s ease-out;
-}
-
-.btn-glow::before {
-    content: '';
-    position: absolute;
-    top: -2px; left: -2px; right: -2px; bottom: -2px;
-    z-index: -1;
-    background: var(--gradient-btn-glow);
-    filter: blur(12px);
-    opacity: 0.7;
-    border-radius: inherit;
-    transition: opacity 0.3s ease-out;
-}
-
-.btn-glow:hover {
-    transform: translateY(-3px) scale(1.05);
-}
-
-.btn-glow:hover::before {
-    opacity: 1;
-}
-
-.project-card.is-hidden {
-    opacity: 0;
-    visibility: hidden;
-    max-height: 0;
-    padding: 0;
-    margin: 0;
-    border: none;
-    overflow: hidden;
-}
-
-.view-all-container button.is-hidden {
-    display: none;
-}
-
-/* =================================================== */
-/* 8. CONTACT SECTION                                  */
-/* =================================================== */
+/* --- Contact Section --- */
 #contact { min-height: auto; }
-.contact-card {
-    background: var(--bg-section);
-    border: 1.1px solid #22243a;
-    border-radius: 14px;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 48px 55px;
-    display: flex;
-    gap: 3rem;
-    box-shadow: var(--shadow-card);
-    align-items: flex-start;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.contact-card.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
+.contact-card { background: var(--bg-section); border: 1.1px solid #22243a; border-radius: 14px; max-width: 1100px; margin: 0 auto; padding: 48px 55px; display: flex; gap: 3rem; box-shadow: var(--shadow-card); align-items: flex-start; opacity: 0; transform: translateY(50px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.contact-card.is-visible { opacity: 1; transform: translateY(0); }
 .contact-card-left { flex: 1; }
 .contact-card-right { flex: 1; }
-
-.contact-card-left h3 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    color: var(--text-main);
-}
-.contact-card-left p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 2rem;
-    color: var(--text-light);
-}
-
-.contact-info-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem;}
+.contact-card-left h3 { font-size: 1.8rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--text-main); }
+.contact-card-left p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem; color: var(--text-light); }
+.contact-info-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
 .contact-info-list li { display: flex; align-items: center; gap: 1rem; font-size: 1rem; }
 .contact-info-list i { font-size: 1.5rem; width: 24px; text-align: center; }
-
 .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
-.contact-form input, .contact-form textarea {
-    padding: 16px;
-    border-radius: 8px;
-    border: 1.5px solid #282A3E;
-    background: #1c1e2b;
-    font-size: 1rem;
-    color: var(--text-main);
-    font-family: inherit;
-    resize: none;
-    outline: none;
-    transition: all 0.2s;
-}
+.contact-form input, .contact-form textarea { padding: 16px; border-radius: 8px; border: 1.5px solid #282A3E; background: #1c1e2b; font-size: 1rem; color: var(--text-main); font-family: inherit; resize: none; outline: none; transition: all 0.2s; }
 .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--text-muted); }
-.contact-form input:focus, .contact-form textarea:focus {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(169, 147, 254, 0.25);
-}
-.contact-form button {
-    background: var(--gradient-btn);
-    color: #fff;
-    font-weight: 600;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 8px;
-    padding: 16px 0;
-    box-shadow: var(--shadow-btn);
-    cursor: pointer;
-    margin-top: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    transition: all 0.2s;
-}
-.contact-form button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(88, 80, 236, 0.3);
-}
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(169, 147, 254, 0.25); }
+.contact-form button { background: var(--gradient-btn); color: #fff; font-weight: 600; font-size: 1.1rem; border: none; border-radius: 8px; padding: 16px 0; box-shadow: var(--shadow-btn); cursor: pointer; margin-top: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; transition: all 0.2s; }
+.contact-form button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(88, 80, 236, 0.3); }
 
-/* =================================================== */
-/* 9. FOOTER                                           */
-/* =================================================== */
+/* --- Footer --- */
 footer {
     width: 100%;
     text-align: center;
@@ -683,125 +411,30 @@ footer {
 }
 
 /* =================================================== */
-/* 10. ANIMATION KEYFRAMES                             */
+/* 6. ANIMATION KEYFRAMES                              */
 /* =================================================== */
 @keyframes rotate-bg {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-@keyframes typing-loop {
-    0% { width: 0; }
-    40% { width: 100%; }
-    70% { width: 100%; }
-    100% { width: 0; }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--color-primary); }
-}
+/* Keyframes untuk animasi ketik nama TELAH DIHAPUS */
 
 /* =================================================== */
-/* 11. MEDIA QUERIES (RESPONSIVE DESIGN)               */
+/* 7. RESPONSIVE DESIGN (MEDIA QUERIES)                */
 /* =================================================== */
 
-/* ----- TABLET & SMALLER DESKTOP (<= 992px) ----- */
-@media (max-width: 992px) {
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .about-card {
-        flex-direction: column;
-        gap: 30px;
-        align-items: stretch;
-    }
-    .about-card-right { margin-left: 0; }
-    .skill-categories-grid {
-        grid-template-columns: 1fr;
-    }
-    nav { padding: 0 24px; }
-    nav ul { gap: 24px; }
-    nav ul li a { font-size: 1rem; }
-}
-
-/* ----- MOBILE DEVICES (<= 768px) ----- */
-@media (max-width: 768px) {
-    nav { height: 60px; padding: 0 16px; }
-    nav ul { gap: 15px; }
-    nav ul li a { font-size: 0.9rem; }
-    .container { width: 95%; }
-
-    #home.hero {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-    }
-    .hero-text {
-        margin-top: 20px;
-        order: 2;
-    }
-    .hero-image { order: 1; }
-    .hero-btns, .hero-social .social-icons {
-        justify-content: center;
-    }
-    .hero-social { align-items: center; }
-    .hero-social .social-icons { max-width: 100%; }
-
-    .hero-text h1.line-1, .hero-text h1.line-2 { font-size: 3rem; }
-    .hero-text p { font-size: 1rem; }
-
-    .rotating-card-bg {
-        width: 330px;
-        height: 330px;
-    }
-    .hero-image .main-card {
-        width: 310px;
-        height: 330px;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .contact-card {
-        flex-direction: column;
-        padding: 30px 20px;
-    }
-}
-
-/* =================================================== */
-/* 12. RESPONSIVE SIDEBAR NAVIGATION                   */
-/* Letakkan kode ini di bagian paling bawah CSS Anda    */
-/* =================================================== */
-
-/* Tombol Hamburger (Awalnya tersembunyi di desktop) */
-.hamburger-btn {
-    display: none; /* Sembunyikan di layar besar */
-    background: none;
-    border: none;
-    color: var(--text-light);
-    font-size: 1.6rem;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-/* Tombol Tutup Sidebar */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+/* Tombol Hamburger & Overlay (Awalnya tersembunyi) */
+.hamburger-btn, .close-btn {
+    display: none;
     background: none;
     border: none;
     color: var(--text-light);
     font-size: 1.8rem;
     cursor: pointer;
-}
-.close-btn:hover {
-    color: var(--text-main);
+    z-index: 1001;
 }
 
-/* Overlay (Latar belakang gelap) */
 .overlay {
     position: fixed;
     top: 0;
@@ -809,419 +442,168 @@ footer {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-    z-index: 998; /* Di bawah sidebar, di atas konten */
+    z-index: 998;
     opacity: 0;
-    pointer-events: none; /* Tidak bisa diklik saat tersembunyi */
+    pointer-events: none;
     transition: opacity 0.3s ease-in-out;
 }
-
 .overlay.active {
     opacity: 1;
-    pointer-events: auto; /* Bisa diklik saat aktif */
+    pointer-events: auto;
 }
 
 
-/* -- Breakpoint saat Navigasi berubah menjadi Sidebar -- */
-@media (max-width: 992px) {
+/* TABLET & SMALLER DESKTOP (<= 1024px) */
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 30px;
+    }
+    .about-card-right {
+        margin-left: 0;
+    }
+    .contact-card {
+        flex-direction: column;
+    }
+}
 
-    /* Tampilkan tombol hamburger */
+
+/* TABLET & MOBILE (<= 992px) - Perubahan Navigasi & Layout Utama */
+@media (max-width: 992px) {
     .hamburger-btn {
         display: block;
     }
-
-    /* Ubah daftar link menjadi sidebar */
     nav .nav-links {
         position: fixed;
         top: 0;
         right: 0;
-        width: 280px; /* Lebar sidebar */
+        transform: translateX(100%);
+        width: 280px;
         height: 100vh;
         background-color: var(--bg-section);
         border-left: 1px solid var(--border-card);
         z-index: 999;
-
-        /* Atur ulang dari horizontal ke vertikal */
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 2rem;
-        
-        /* Sembunyikan sidebar di luar layar ke kanan */
-        transform: translateX(100%);
         transition: transform 0.4s ease-in-out;
     }
-
-    /* Kelas .active akan menggeser sidebar ke dalam layar */
     nav .nav-links.active {
         transform: translateX(0);
     }
-    
-    /* Atur ulang gaya link di dalam sidebar */
     nav .nav-links li {
         width: 100%;
         text-align: center;
     }
-
     nav .nav-links li a {
         font-size: 1.5rem;
         padding: 1rem 0;
         display: block;
         width: 100%;
     }
-
-    /* Sembunyikan garis bawah pada link di mode sidebar */
-    nav ul li a.active::after,
-    nav ul li a:hover::after {
+    nav .nav-links li a:hover {
+        background-color: rgba(169, 147, 254, 0.1);
+        color: var(--color-primary);
+    }
+    nav .nav-links li a.active::after,
+    nav .nav-links li a:hover::after {
         display: none;
     }
-
-    nav ul li a:hover {
-        background-color: rgba(169, 147, 254, 0.1);
-    }
-}
-
-/* =================================================== */
-/* 13. PERBAIKAN TAMPILAN MOBILE (HERO SECTION)        */
-/* Letakkan kode ini di bagian paling bawah CSS Anda    */
-/* =================================================== */
-
-/* --- Target untuk Layar Mobile --- */
-@media (max-width: 768px) {
-
-    /* 1. Perbaikan Gambar Hero (Tidak Terpotong) */
-    .main-card img {
-        /* Mengubah posisi fokus gambar dari tengah ke atas */
-        object-position: top; 
+    .close-btn {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 25px;
     }
 
-    /* 2. Perbaikan Teks Animasi & Kepadatan Layout */
-    .hero-text h1.line-1, 
-    .hero-text h1.line-2 {
-        font-size: 2.5rem; /* Perkecil sedikit ukuran font judul utama */
-        line-height: 1.2;
+    .skill-categories-grid {
+        grid-template-columns: 1fr;
     }
-
-    .hero-text h2 {
-        font-size: 1.4rem; /* Perkecil font subtitle animasi */
-        min-height: 40px;  /* Beri ruang agar tidak "loncat" */
-    }
-
-    .hero-text p {
-        font-size: 0.95rem; /* Perkecil sedikit font paragraf */
-        padding: 0 10px;   /* Beri sedikit padding agar tidak terlalu mepet ke tepi */
-    }
-
-    /* 3. Perbaikan Tombol "Let's Talk" dan Penyesuaian Tombol Lain */
-    .hero-btns {
-        flex-direction: column; /* Susun tombol ke bawah */
-        align-items: center;    /* Posisikan di tengah */
-        gap: 1rem;              /* Beri jarak antar tombol */
-    }
-
-    .hero-btns .btn-primary, .hero-btns .btn-secondary {
-        width: 80%; /* Buat lebar tombol konsisten */
-        justify-content: center;
-        padding: 14px 24px; /* Sedikit sesuaikan padding */
-        font-size: 1.1rem;
-    }
-    
-    .hero-btns .btn-secondary {
-        /* Memberi warna latar solid untuk menghilangkan artefak visual */
-        background-color: rgba(35, 35, 54, 0.5); 
-        border-color: #555;
-    }
-    
-    .hero-btns .btn-secondary:hover {
-        background-color: rgba(50, 50, 70, 0.8);
-        border-color: var(--text-light);
-    }
-}
-
-/* =================================================== */
-/* 15. PERBAIKAN FINAL TAMPILAN MOBILE                 */
-/* =================================================== */
-
-@media (max-width: 768px) {
-
-    /* --- 1. Memberi 'Ruang Napas' pada Layout --- */
-    nav {
-        /* Menambah jarak logo & hamburger dari tepi layar */
-        padding: 0 24px; 
-    }
-    .hero-text {
-        /* Menambah jarak untuk semua teks di bagian hero */
-        padding: 0 15px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    /* --- 2. Memperbaiki Teks yang Terpotong --- */
-    .hero-text h1.line-1, 
-    .hero-text h1.line-2 {
-        /* Ukuran font diperkecil secara signifikan agar muat */
-        font-size: 2.4rem; 
-        line-height: 1.25;
-    }
-    .hero-text h2 {
-        /* Ukuran sub-judul juga diperkecil */
-        font-size: 1.3rem;
-        min-height: 40px;
-    }
-    
-    /* Failsafe untuk menyembunyikan kursor animasi di mobile, jika JS tidak berjalan sempurna */
-    .typed-cursor {
-        display: none !important;
-    }
-
-    /* --- 3. Memperbaiki Tombol --- */
-    .hero-btns {
-        /* Paksa tombol untuk tersusun ke bawah */
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem; /* Jarak antar tombol */
-        width: 100%;
-    }
-
-    .hero-btns .btn-primary, 
-    .hero-btns .btn-secondary {
-        /* Atur lebar agar konsisten dan tidak terlalu lebar */
-        width: 90%; 
-        max-width: 400px;
-        justify-content: center; /* Teks dan ikon di tengah tombol */
-        
-        /* Trik untuk menghilangkan garis/artefak aneh di sudut tombol */
-        overflow: hidden; 
-    }
-
-    /* --- 4. Penyesuaian Jarak Lainnya --- */
-    .hero-social {
-        margin-top: 40px; /* Jarak dari tombol ke 'CONNECT WITH ME' */
-    }
-}
-
-/* =================================================== */
-/* 16. PERBAIKAN FINAL TEKS WRAPPING MOBILE          */
-/* =================================================== */
-
-@media (max-width: 768px) {
-
-    .hero-text h1.line-1, 
-    .hero-text h1.line-2 {
-        /* Ukuran font diperkecil lagi agar lebih aman di semua perangkat */
-        font-size: 2.2rem; 
-        
-        /* Memberi jarak yang pas jika nama harus turun ke 2 baris */
-        line-height: 1.3; 
-
-        /* INI KUNCI PERBAIKANNYA: */
-        /* Mengizinkan teks untuk turun ke baris baru jika tidak muat */
-        white-space: normal; 
-        
-        /* Memastikan kata yang panjang bisa dipisah jika terpaksa */
-        word-break: break-word; 
-    }
-
-    .hero-text h2 {
-        /* Penyesuaian untuk sub-judul agar tidak terpotong juga */
-        font-size: 1.2rem;
-        white-space: normal;
-        word-break: break-word;
-        min-height: 30px; /* Ruang agar layout stabil */
-    }
-}
-/* =================================================== */
-/* 17. FAILSAFE: HENTIKAN PAKSA ANIMASI DI MOBILE      */
-/* =================================================== */
-
-@media (max-width: 768px) {
-    /* Targetkan elemen span yang berisi animasi */
-    #animated-name, #animated-subtitle {
-        /* Hentikan semua animasi CSS atau JS yang mungkin berjalan */
-        animation: none !important;
-        
-        /* Hapus properti yang membuat teks terpotong */
-        white-space: normal !important;
-        overflow: visible !important;
-        width: auto !important;
-        
-        /* Hapus kursor animasi jika masih muncul */
-        border: none !important;
-    }
-
-    /* Sembunyikan kursor dari library Typed.js secara paksa */
-    .typed-cursor {
-        display: none !important;
-    }
-    
-    /* Sedikit penyesuaian ukuran font sekali lagi untuk kepastian */
-    .hero-text h1.line-2 {
-        font-size: 2.2rem;
-        line-height: 1.3;
-    }
-     .hero-text h2 {
-        font-size: 1.2rem;
-    }
-}
-
-/* =================================================== */
-/* 18. PERBAIKAN TOTAL TAMPILAN HERO MOBILE            */
-/* =================================================== */
-
-@media (max-width: 768px) {
-
-    /* --- Penataan Ulang Layout Hero --- */
     #home.hero {
-        /* Mengurangi padding atas bawah agar tidak terlalu panjang */
-        padding-top: 40px;
-        padding-bottom: 40px;
-    }
-
-    .hero-text {
-        padding: 0 10px; /* Jarak dari tepi layar */
-    }
-
-    /* --- 1. MEMBUAT NAMA JADI 2 BARIS --- */
-    .hero-text h1.line-2 {
-        /* Ukuran font disesuaikan */
-        font-size: 2.5rem; 
-        line-height: 1.2;
-        
-        /* Trik agar "Nurrohman" turun:
-           Kita batasi lebar maksimum elemen nama, sehingga kata terakhir
-           akan otomatis turun ke bawah. */
-        max-width: 300px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* --- 2. MENGATUR RUANG UNTUK ANIMASI SUB-JUDUL --- */
-    .hero-text h2 {
-        /* Ukuran font sub-judul agar tidak pecah */
-        font-size: 1.4rem;
-        
-        /* Beri ruang vertikal yang cukup untuk 2 baris teks animasi,
-           seperti "Video & Photo Editor" agar tidak membuat layout "loncat". */
-        min-height: 4rem; 
-        
-        /* Izinkan teks animasi untuk turun baris jika perlu */
-        white-space: normal; 
-        line-height: 1.4;
-    }
-    
-    /* --- 3. MERAPIKAN KEMBALI TOMBOL-TOMBOL --- */
-    .hero-btns {
         flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .hero-btns .btn-primary, 
-    .hero-btns .btn-secondary {
-        width: 90%; 
-        max-width: 350px;
-        justify-content: center;
-        overflow: hidden; /* Menghilangkan garis aneh di sudut */
-    }
-}
-
-/* =================================================== */
-/* 19. PERBAIKAN RADIKAL MOBILE LAYOUT (TEKS STATIS)   */
-/* =================================================== */
-
-@media (max-width: 768px) {
-
-    .hero-text {
-        /* Memastikan semua teks di dalamnya berada di tengah */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         text-align: center;
+        gap: 40px;
+        min-height: auto;
+        padding-top: 40px;
+        padding-bottom: 60px;
     }
-
-    .hero-text h1.line-2 {
-        /* Beri ruang untuk 2 baris nama */
-        font-size: 2.4rem; 
-        line-height: 1.25;
-        height: auto;
-        min-height: 5rem; /* Ruang untuk 2 baris */
+    .hero-text { order: 2; }
+    .hero-image { order: 1; }
+    .hero-btns, .hero-social .social-icons {
+        justify-content: center;
     }
-
-    /* Target langsung ke span di dalamnya */
-    #animated-name {
-        /* Pastikan tidak ada sisa-sisa properti animasi */
-        white-space: normal !important;
-        animation: none !important;
-        border: none !important;
-    }
-
-    .hero-text h2 {
-        font-size: 1.4rem;
-        margin-top: -1rem; /* Tarik sedikit ke atas agar lebih dekat dengan nama */
-        color: var(--text-light);
-    }
-
-    #animated-subtitle {
-        white-space: normal !important;
-    }
-
-    .hero-text p {
-        padding: 0 10px;
-        margin-top: 1.5rem;
-    }
-    
-    .hero-btns {
+    .hero-social {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
-        width: 100%;
-        margin-top: 2rem;
-    }
-
-    .hero-btns .btn-primary, 
-    .hero-btns .btn-secondary {
-        width: 90%; 
-        max-width: 350px;
-        justify-content: center;
-        overflow: hidden; 
     }
 }
 
-/* =================================================== */
-/* 20. CSS FINAL UNTUK MENDUKUNG ANIMASI MOBILE        */
-/* =================================================== */
 
+/* MOBILE (<= 768px) - Penyesuaian Final */
 @media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+    nav {
+        height: 60px;
+        padding: 0 24px;
+    }
+    section {
+        padding: 60px 0 40px 0;
+    }
+    .container {
+        width: 90%;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    /* Hero Section Mobile */
+    .hero-text h1.line-1,
     .hero-text h1.line-2 {
         font-size: 2.4rem;
         line-height: 1.3;
-        /* Beri ruang vertikal agar teks animasi tidak membuat layout "loncat" */
-        min-height: 3.5rem; 
-        /* Pastikan teks bisa di tengah dengan benar */
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
-
+    
+    .hero-text h1.line-2 span.gradient {
+        white-space: normal; /* Izinkan teks nama turun baris */
+        word-break: break-word;
+    }
+    
     .hero-text h2 {
         font-size: 1.4rem;
-        /* Beri ruang vertikal untuk animasi sub-judul */
-        min-height: 2rem;
     }
-}
-
-/* =================================================== */
-/* 21. PENYESUAIAN JARAK HERO SECTION MOBILE           */
-/* =================================================== */
-
-@media (max-width: 768px) {
-    .hero-text h1.line-2 {
-        /* Menambah jarak di bawah nama */
-        margin-bottom: 1rem; 
+    .hero-text p {
+        font-size: 1rem;
+        padding: 0 10px;
     }
+    .hero-btns {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .hero-btns .btn-primary,
+    .hero-btns .btn-secondary {
+        width: 100%;
+        max-width: 320px;
+    }
+    .main-card img {
+        object-position: top;
+    }
+    .rotating-card-bg { width: 320px; height: 320px; }
+    .hero-image .main-card { width: 300px; height: 320px; }
 
-    .hero-text h2 {
-        /* Menambah jarak di bawah sub-judul */
-        margin-bottom: 1.5rem; 
+    /* Layout Grid Lainnya */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-card {
+        padding: 30px 25px;
     }
 }
